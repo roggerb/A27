@@ -1,0 +1,51 @@
+
+extends ../layout
+
+block content
+    table.table
+
+        thead
+
+            tr
+
+                th(scope='col') #
+
+                th(scope='col') Color
+
+                th(scope='col') Modelo
+
+                th(scope='col') Ubicación
+
+        tbody
+
+            each bici in bicis
+
+                tr
+
+                    td(scope='row')= bici.bicicletaID
+
+                    td= bici.color
+
+                    td= bici.modelo
+
+                    td= bici.ubicacion
+
+                    td
+
+                        form.inline(method='post' action='bicicletas/delete')
+
+                            input(type='hidden' name='id' value=bici._id)
+
+                            button.link-button(type='submit' class='btn')
+
+                                ='Eliminar'
+
+                    td
+
+                        a.btn(href='bicicletas/' + bici._id + '/update')
+
+
+                                ='Actualizar'
+
+
+    a(href='/bicicletas/create') Bicicleta nueva
